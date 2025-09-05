@@ -38,4 +38,26 @@ for x,y in data["items"]:
     item = canvas.create_oval(x, y, x+5, y+5, fill='white')
     items.append(item)
 
+def up_handler(event):
+    canvas.move(player, 0, -10)
+
+def down_handler(event):
+    canvas.move(player, 0, 10)
+
+def left_handler(event):
+    canvas.move(player, -10, 0)
+
+def right_handler(event):
+    canvas.move(player, 10, 0)
+
+root.bind("<Up>", up_handler)
+root.bind("<Down>", down_handler)
+root.bind("<Left>", left_handler)
+root.bind("<Right>", right_handler)
+
+root.bind("w", up_handler)
+root.bind("s", down_handler)
+root.bind("a", left_handler)
+root.bind("d", right_handler)
+
 root.mainloop()
