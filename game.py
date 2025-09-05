@@ -54,7 +54,9 @@ def touch():
 
     # nếu không còn item nào, trò chơi kết thúc
     if len(items) == 0:
-       print("END!")
+       canvas.delete("all")
+       victory_label = Label(root, text="Hoàn thành trong " + str(data["score"]) + " bước!")
+       canvas.create_window(250, 250, window=victory_label)
 
 def update_score():
     # thay đổi số điểm
