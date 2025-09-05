@@ -24,7 +24,8 @@ data = {
         [300, 350],
         [250, 400],
         [250, 50]
-    ]
+    ],
+    "score": 0
 }
 
 px, py = data["player"]
@@ -38,17 +39,26 @@ for x,y in data["items"]:
     item = canvas.create_oval(x, y, x+5, y+5, fill='white')
     items.append(item)
 
+def update_score():
+    # thay đổi số điểm
+    data["score"] = data["score"] + 1
+    score_label.configure(text="Số bước: "+str(data["score"]))
+
 def up_handler(event):
     canvas.move(player, 0, -10)
+    update_score()
 
 def down_handler(event):
     canvas.move(player, 0, 10)
+    update_score()
 
 def left_handler(event):
     canvas.move(player, -10, 0)
+    update_score()
 
 def right_handler(event):
     canvas.move(player, 10, 0)
+    update_score()
 
 root.bind("<Up>", up_handler)
 root.bind("<Down>", down_handler)
